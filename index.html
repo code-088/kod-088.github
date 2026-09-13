@@ -3,638 +3,687 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUMIÈRE — Kuaför & Güzellik</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Atalay Kayak Evi — Kayak &amp; Snowboard Kiralama ve Satış</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream: #f5f0e8; 
-    --dark: #1a1410;
-    --gold: #c9a96e;
-    --gold-light: #e8d5b0;
-    --muted: #8a7968;
-    --white: #fdfaf5;
+
+  :root{
+    --midnight:#0E1517;
+    --pine:#16221F;
+    --pine-light:#20302A;
+    --snowdrift:#F4F2EC;
+    --ice:#AED9DD;
+    --amber:#C98A3E;
+    --amber-soft:#E3B77A;
+    --stone:#7C8682;
+    --stone-light:#AAB2AE;
+    --line:rgba(244,242,236,0.14);
+    --line-dark:rgba(14,21,23,0.12);
+    --piste-green:#3F8F5F;
+    --piste-blue:#3E6FA6;
+    --piste-red:#B23A3A;
+    --piste-black:#1A1A1A;
   }
 
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  *{margin:0;padding:0;box-sizing:border-box;}
 
-  html { scroll-behavior: smooth; }
+  html{scroll-behavior:smooth;}
 
-  body {
-    background: var(--cream);
-    color: var(--dark);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.4rem 3rem;
-    background: rgba(245,240,232,0.88);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(201,169,110,0.18);
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem; letter-spacing: .18em;
-    font-weight: 300; color: var(--dark);
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
-  .nav-links a {
-    font-size: .78rem; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--muted); text-decoration: none;
-    transition: color .25s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    background: var(--dark); color: var(--cream);
-    padding: .55rem 1.5rem; border-radius: 2px;
-    font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
-    text-decoration: none; transition: background .25s, color .25s;
-  }
-  .nav-cta:hover { background: var(--gold); color: var(--dark); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: grid; grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
-    overflow: hidden;
-  }
-  .hero-text {
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 6rem 4rem 6rem 3rem;
-    position: relative;
-  }
-  .hero-eyebrow {
-    font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 2rem;
-    display: flex; align-items: center; gap: .8rem;
-  }
-  .hero-eyebrow::before {
-    content: ''; display: block;
-    width: 32px; height: 1px; background: var(--gold);
-  }
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.2rem, 5vw, 5.5rem);
-    font-weight: 300; line-height: 1.05;
-    margin-bottom: 1.8rem; color: var(--dark);
-  }
-  .hero-title em { font-style: italic; color: var(--gold); }
-  .hero-sub {
-    font-size: 1rem; color: var(--muted); line-height: 1.75;
-    max-width: 400px; margin-bottom: 3rem;
-  }
-  .hero-actions { display: flex; gap: 1.2rem; align-items: center; }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: .7rem;
-    background: var(--dark); color: var(--cream);
-    padding: .9rem 2.2rem; border-radius: 2px;
-    font-size: .82rem; letter-spacing: .12em; text-transform: uppercase;
-    text-decoration: none; transition: all .3s;
-  }
-  .btn-primary:hover { background: var(--gold); color: var(--dark); transform: translateY(-2px); }
-  .btn-secondary {
-    font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--muted); text-decoration: none;
-    border-bottom: 1px solid var(--gold-light);
-    padding-bottom: 2px; transition: color .25s, border-color .25s;
-  }
-  .btn-secondary:hover { color: var(--gold); border-color: var(--gold); }
-
-  .hero-image {
-    position: relative; overflow: hidden;
-    background: var(--dark);
-  }
-  .hero-img-bg {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(135deg, #2a1f14 0%, #1a1410 40%, #0d0a07 100%);
-  }
-  /* Dekoratif saç deseni */
-  .hero-decoration {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .hero-circle {
-    width: 520px; height: 520px; border-radius: 50%;
-    border: 1px solid rgba(201,169,110,.15);
-    position: absolute;
-    animation: pulse-ring 4s ease-in-out infinite;
-  }
-  .hero-circle:nth-child(2) {
-    width: 380px; height: 380px;
-    border-color: rgba(201,169,110,.25);
-    animation-delay: .5s;
-  }
-  .hero-circle:nth-child(3) {
-    width: 240px; height: 240px;
-    border-color: rgba(201,169,110,.4);
-    animation-delay: 1s;
-  }
-  @keyframes pulse-ring {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.03); opacity: .7; }
-  }
-  .hero-icon {
-    position: absolute;
-    font-size: 6rem;
-    opacity: .35;
-    filter: drop-shadow(0 0 40px rgba(201,169,110,.4));
-  }
-  .hero-badge {
-    position: absolute; bottom: 3rem; left: 3rem;
-    background: rgba(201,169,110,.12);
-    border: 1px solid rgba(201,169,110,.3);
-    padding: 1.2rem 1.6rem; border-radius: 4px;
-    backdrop-filter: blur(8px);
-  }
-  .hero-badge-label {
-    font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: .4rem;
-  }
-  .hero-badge-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; color: var(--cream);
-    font-style: italic;
+  body{
+    background:var(--snowdrift);
+    color:var(--pine);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
   }
 
-  /* ── SCROLL LINE ── */
-  .scroll-hint {
-    position: absolute; bottom: 2.5rem; left: 3rem;
-    display: flex; align-items: center; gap: .8rem;
-    font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--muted);
-  }
-  .scroll-line {
-    width: 40px; height: 1px; background: var(--gold-light);
-    position: relative; overflow: hidden;
-  }
-  .scroll-line::after {
-    content: ''; position: absolute; left: -100%; top: 0;
-    width: 100%; height: 100%; background: var(--gold);
-    animation: scroll-anim 2s ease-in-out infinite;
-  }
-  @keyframes scroll-anim {
-    0% { left: -100%; } 100% { left: 100%; }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
   }
 
-  /* ── STATS BAR ── */
-  .stats-bar {
-    background: var(--dark);
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid rgba(201,169,110,.15);
-  }
-  .stat-item {
-    padding: 2.4rem 2rem;
-    text-align: center;
-    border-right: 1px solid rgba(201,169,110,.1);
-  }
-  .stat-item:last-child { border-right: none; }
-  .stat-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem; font-weight: 300;
-    color: var(--gold); line-height: 1;
-    margin-bottom: .4rem;
-  }
-  .stat-label {
-    font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
-    color: rgba(245,240,232,.4);
+  a{color:inherit;text-decoration:none;}
+
+  img,svg{display:block;max-width:100%;}
+
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 40px;
   }
 
-  /* ── HİZMETLER ── */
-  .section { padding: 7rem 3rem; }
-  .section-header { text-align: center; margin-bottom: 4rem; }
-  .section-eyebrow {
-    font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 1rem;
-    display: flex; align-items: center; justify-content: center; gap: 1rem;
-  }
-  .section-eyebrow::before, .section-eyebrow::after {
-    content: ''; display: block;
-    width: 28px; height: 1px; background: var(--gold-light);
-  }
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.4rem, 3.5vw, 3.8rem);
-    font-weight: 300; line-height: 1.1;
+  @media(max-width:640px){
+    .wrap{padding:0 22px;}
   }
 
-  .services-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
-    background: rgba(201,169,110,.12);
-    border: 1.5px solid rgba(201,169,110,.12);
-  }
-  .service-card {
-    background: var(--white);
-    padding: 3rem 2.4rem;
-    transition: background .3s;
-    cursor: default;
-  }
-  .service-card:hover { background: var(--dark); }
-  .service-card:hover .service-name,
-  .service-card:hover .service-desc { color: var(--cream); }
-  .service-card:hover .service-icon { color: var(--gold); }
-  .service-card:hover .service-price { color: var(--gold-light); }
-  .service-icon { font-size: 1.8rem; margin-bottom: 1.4rem; transition: color .3s; }
-  .service-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem; font-weight: 400;
-    margin-bottom: .7rem; transition: color .3s;
-  }
-  .service-desc {
-    font-size: .85rem; color: var(--muted);
-    line-height: 1.7; margin-bottom: 1.5rem;
-    transition: color .3s;
-  }
-  .service-price {
-    font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--gold); font-weight: 500;
-    transition: color .3s;
+  /* ---------- focus ---------- */
+  a:focus-visible,button:focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:3px;
   }
 
-  /* ── EVE GELİYORUZ ── */
-  .home-visit {
-    background: var(--dark);
-    display: grid; grid-template-columns: 1fr 1fr;
-    align-items: center;
-    overflow: hidden;
-  }
-  .home-visit-visual {
-    position: relative;
-    height: 100%;
-    min-height: 500px;
-    background: linear-gradient(135deg, #2a1f14, #0d0a07);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .visit-map {
-    width: 320px; height: 320px; border-radius: 50%;
-    border: 1px solid rgba(201,169,110,.2);
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-  }
-  .visit-map::before {
-    content: '';
-    position: absolute; inset: -20px;
-    border-radius: 50%;
-    border: 1px solid rgba(201,169,110,.1);
-  }
-  .visit-map::after {
-    content: '';
-    position: absolute; inset: -40px;
-    border-radius: 50%;
-    border: 1px dashed rgba(201,169,110,.08);
-  }
-  .map-icon { font-size: 4rem; }
-
-  /* Animasyonlu noktalar */
-  .map-dot {
-    position: absolute; width: 8px; height: 8px;
-    border-radius: 50%; background: var(--gold);
-    box-shadow: 0 0 12px var(--gold);
-    animation: map-ping 2s ease-in-out infinite;
-  }
-  .map-dot:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
-  .map-dot:nth-child(2) { top: 60%; right: 25%; animation-delay: .6s; }
-  .map-dot:nth-child(3) { bottom: 25%; left: 40%; animation-delay: 1.2s; }
-  @keyframes map-ping {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.6); opacity: .5; }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
   }
 
-  .home-visit-text { padding: 5rem 4rem; }
-  .home-visit-text .section-eyebrow { justify-content: flex-start; }
-  .home-visit-text .section-eyebrow::after { display: none; }
-  .home-visit-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 3vw, 3.4rem);
-    font-weight: 300; color: var(--cream);
-    line-height: 1.1; margin-bottom: 1.5rem;
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(14,21,23,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
   }
-  .home-visit-title em { font-style: italic; color: var(--gold); }
-  .home-visit-desc {
-    font-size: .9rem; color: rgba(245,240,232,.55);
-    line-height: 1.8; margin-bottom: 2.5rem; max-width: 420px;
+  .nav-inner{
+    max-width:1240px;margin:0 auto;padding:18px 40px;
+    display:flex;align-items:center;justify-content:space-between;
+    color:var(--snowdrift);
   }
-  .feature-list { list-style: none; margin-bottom: 2.5rem; }
-  .feature-list li {
-    display: flex; align-items: flex-start; gap: .9rem;
-    font-size: .87rem; color: rgba(245,240,232,.65);
-    margin-bottom: .9rem; line-height: 1.6;
+  .logo{
+    display:flex;align-items:center;gap:12px;
+    font-family:'Fraunces',serif;
+    font-size:20px;letter-spacing:0.01em;color:var(--snowdrift);
   }
-  .feature-list li::before {
-    content: '✦';
-    color: var(--gold); font-size: .65rem;
-    margin-top: .3rem; flex-shrink: 0;
+  .logo svg{width:30px;height:30px;flex-shrink:0;}
+  .logo .sub{
+    display:block;font-family:'Inter',sans-serif;font-size:10.5px;
+    color:var(--ice);letter-spacing:0.06em;margin-top:2px;font-weight:500;
+  }
+  nav.links{display:flex;gap:34px;}
+  nav.links a{
+    font-size:14.5px;color:var(--stone-light);
+    position:relative;padding-bottom:3px;
+    transition:color .2s ease;
+  }
+  nav.links a::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:1px;
+    background:var(--amber-soft);transition:width .25s ease;
+  }
+  nav.links a:hover{color:var(--snowdrift);}
+  nav.links a:hover::after{width:100%;}
+  .nav-actions{display:flex;gap:10px;align-items:center;}
+  .icon-btn{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid rgba(244,242,236,0.28);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--snowdrift);transition:border-color .2s ease, background .2s ease;
+  }
+  .icon-btn:hover{border-color:var(--amber-soft);background:rgba(201,138,62,0.14);}
+  .icon-btn svg{width:17px;height:17px;}
+  .burger{display:none;}
+
+  @media(max-width:900px){
+    nav.links{display:none;}
+    .burger{
+      display:flex;width:38px;height:38px;border-radius:50%;
+      border:1px solid rgba(244,242,236,0.28);align-items:center;justify-content:center;
+    }
+    .burger svg{width:18px;height:18px;color:var(--snowdrift);}
   }
 
-  /* ── RANDEVU / WHATSAPP ── */
-  .contact-section {
-    background: var(--white);
-    padding: 7rem 3rem;
-    text-align: center;
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg,var(--midnight) 0%, var(--pine) 72%, var(--pine) 100%);
+    overflow:hidden;
+    padding-top:64px;
   }
-  .wa-card {
-    max-width: 620px; margin: 3rem auto 0;
-    background: var(--dark);
-    border-radius: 6px;
-    padding: 3.5rem 3rem;
-    position: relative; overflow: hidden;
+  .hero-inner{
+    max-width:1240px;margin:0 auto;padding:0 40px;
+    position:relative;z-index:3;
+    min-height:640px;
+    display:flex;flex-direction:column;justify-content:center;
+    padding-bottom:100px;padding-top:70px;
   }
-  .wa-card::before {
-    content: '';
-    position: absolute; top: -60px; right: -60px;
-    width: 200px; height: 200px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,169,110,.12) 0%, transparent 70%);
+  .hero-eyebrow{
+    color:var(--amber-soft);font-size:14.5px;font-weight:500;
+    margin-bottom:22px;max-width:360px;
   }
-  .wa-number-label {
-    font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 1rem;
+  .hero h1{
+    color:var(--snowdrift);
+    font-size:clamp(48px,8vw,94px);
+    line-height:0.98;
+    font-weight:500;
+    max-width:760px;
   }
-  .wa-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem; color: var(--cream);
-    letter-spacing: .04em; margin-bottom: .5rem;
+  .hero h1 em{
+    font-style:italic;color:var(--ice);font-weight:400;
   }
-  .wa-note {
-    font-size: .82rem; color: rgba(245,240,232,.4);
-    margin-bottom: 2.2rem; line-height: 1.6;
+  .hero p.lead{
+    margin-top:26px;
+    color:var(--stone-light);
+    font-size:18px;
+    max-width:480px;
   }
-  .wa-btn {
-    display: inline-flex; align-items: center; gap: .9rem;
-    background: #25D366; color: white;
-    padding: 1.1rem 2.8rem; border-radius: 4px;
-    font-size: .85rem; letter-spacing: .1em; text-transform: uppercase;
-    text-decoration: none; font-weight: 500;
-    transition: all .3s; box-shadow: 0 8px 30px rgba(37,211,102,.2);
+  .hero-cta{
+    margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;
   }
-  .wa-btn:hover {
-    background: #1db954; transform: translateY(-3px);
-    box-shadow: 0 14px 40px rgba(37,211,102,.35);
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:2px;
+    font-size:15px;font-weight:500;
+    transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
   }
-  .wa-btn svg { width: 22px; height: 22px; }
-  .working-hours {
-    display: flex; justify-content: center; gap: 3rem;
-    margin-top: 3rem; padding-top: 2rem;
-    border-top: 1px solid rgba(201,169,110,.1);
+  .btn svg{width:17px;height:17px;}
+  .btn-amber{
+    background:var(--amber);color:var(--midnight);
   }
-  .hour-item { text-align: center; }
-  .hour-day {
-    font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
-    color: rgba(245,240,232,.35); margin-bottom: .4rem;
+  .btn-amber:hover{background:var(--amber-soft);transform:translateY(-1px);}
+  .btn-outline{
+    border:1px solid rgba(244,242,236,0.35);color:var(--snowdrift);
   }
-  .hour-time {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; color: var(--gold-light);
+  .btn-outline:hover{border-color:var(--snowdrift);background:rgba(244,242,236,0.06);}
+
+  .hero-art{
+    position:absolute;inset:0;z-index:1;
+  }
+  .hero-art svg{width:100%;height:100%;}
+  .hero-fade{
+    position:absolute;left:0;right:0;bottom:0;height:220px;z-index:2;
+    background:linear-gradient(180deg, rgba(22,34,31,0) 0%, var(--pine) 92%);
   }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--dark);
-    border-top: 1px solid rgba(201,169,110,.1);
-    padding: 2.5rem 3rem;
-    display: flex; align-items: center; justify-content: space-between;
+  .peak-line{
+    fill:none;stroke:var(--ice);stroke-width:1.1;opacity:0.45;
+    stroke-dasharray:900;stroke-dashoffset:900;
+    animation:draw 2.4s ease forwards .3s;
   }
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem; letter-spacing: .15em;
-    color: var(--gold-light);
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  .hero-fadein{
+    opacity:0;transform:translateY(14px);
+    animation:fadein 1s ease forwards .5s;
   }
-  .footer-copy {
-    font-size: .72rem; color: rgba(245,240,232,.3);
-    letter-spacing: .08em;
+  @keyframes fadein{to{opacity:1;transform:translateY(0);}}
+
+  /* ---------- CONTOUR DIVIDER ---------- */
+  .contour-divider{
+    background:var(--pine);
+    line-height:0;
+  }
+  .contour-divider svg{width:100%;height:auto;display:block;}
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{
+    background:var(--snowdrift);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .trust-row{
+    max-width:1240px;margin:0 auto;padding:30px 40px;
+    display:flex;flex-wrap:wrap;justify-content:center;
+    gap:0;
+  }
+  .trust-item{
+    display:flex;flex-direction:column;align-items:center;
+    text-align:center;padding:6px 34px;
+    border-left:1px solid rgba(22,34,31,0.14);
+  }
+  .trust-item:first-child{border-left:none;}
+  .trust-item .num{
+    font-family:'Fraunces',serif;font-size:26px;color:var(--pine);
+  }
+  .trust-item .label{
+    font-size:12.5px;color:var(--stone);margin-top:4px;max-width:150px;
+  }
+  @media(max-width:760px){
+    .trust-item{border-left:none;border-top:1px solid rgba(22,34,31,0.14);width:50%;padding:18px 10px;}
+    .trust-item:nth-child(1),.trust-item:nth-child(2){border-top:none;}
   }
 
-  /* ── ANİMASYONLAR ── */
-  .reveal {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity .7s ease, transform .7s ease;
+  /* ---------- SECTION HEADS ---------- */
+  .section-head{max-width:560px;margin-bottom:56px;}
+  .section-head h2{
+    font-size:clamp(30px,4vw,42px);color:var(--pine);
   }
-  .reveal.visible { opacity: 1; transform: none; }
+  .section-head p{
+    margin-top:14px;color:var(--stone);font-size:16px;max-width:460px;
+  }
+  .section-head.on-dark h2{color:var(--snowdrift);}
+  .section-head.on-dark p{color:var(--stone-light);}
 
-  /* ── MOBİL ── */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.4rem; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-text { padding: 3rem 1.4rem; }
-    .hero-image { min-height: 280px; }
-    .stats-bar { grid-template-columns: 1fr; }
-    .stat-item { border-right: none; border-bottom: 1px solid rgba(201,169,110,.1); }
-    .section { padding: 4rem 1.4rem; }
-    .services-grid { grid-template-columns: 1fr; }
-    .home-visit { grid-template-columns: 1fr; }
-    .home-visit-visual { min-height: 280px; }
-    .home-visit-text { padding: 3rem 1.4rem; }
-    .wa-card { padding: 2.5rem 1.4rem; }
-    .wa-number { font-size: 2rem; }
-    .working-hours { gap: 1.5rem; flex-wrap: wrap; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  /* ---------- SERVICES (KİRALAMA / SATIŞ) ---------- */
+  .services{
+    display:grid;grid-template-columns:1fr 1fr;
+    position:relative;
   }
+  .service-panel{
+    padding:90px 60px;position:relative;overflow:hidden;
+  }
+  .service-panel.rent{
+    background:var(--pine);color:var(--snowdrift);
+  }
+  .service-panel.sale{
+    background:var(--snowdrift);color:var(--pine);
+  }
+  .service-tag{
+    font-size:13.5px;color:var(--amber-soft);margin-bottom:18px;font-weight:500;
+  }
+  .service-panel.sale .service-tag{color:var(--amber);}
+  .service-panel h3{
+    font-size:clamp(28px,3.4vw,38px);margin-bottom:20px;max-width:360px;
+  }
+  .service-panel p{
+    color:var(--stone-light);max-width:380px;margin-bottom:26px;
+  }
+  .service-panel.sale p{color:var(--stone);}
+  .service-list{list-style:none;margin-bottom:30px;}
+  .service-list li{
+    display:flex;gap:10px;font-size:14.5px;padding:8px 0;
+    border-top:1px solid rgba(244,242,236,0.12);color:var(--stone-light);
+  }
+  .service-panel.sale .service-list li{
+    border-top:1px solid rgba(22,34,31,0.12);color:var(--stone);
+  }
+  .service-list li:last-child{border-bottom:1px solid rgba(244,242,236,0.12);}
+  .service-panel.sale .service-list li:last-child{border-bottom:1px solid rgba(22,34,31,0.12);}
+  .service-list svg{width:15px;height:15px;flex-shrink:0;margin-top:2px;color:var(--amber-soft);}
+  .service-panel.sale .service-list svg{color:var(--amber);}
+
+  @media(max-width:860px){
+    .services{grid-template-columns:1fr;}
+    .service-panel{padding:64px 28px;}
+  }
+
+  /* ---------- CATEGORIES ---------- */
+  .categories{padding:110px 0 100px;background:var(--snowdrift);}
+  .cat-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr;
+    grid-template-rows:auto auto;
+    gap:18px;
+  }
+  .cat-card{
+    position:relative;border-radius:2px;overflow:hidden;
+    background:var(--pine);color:var(--snowdrift);
+    padding:34px;display:flex;flex-direction:column;justify-content:flex-end;
+    min-height:300px;
+  }
+  .cat-card.tall{grid-row:span 2;min-height:100%;}
+  .cat-card .cat-bg{position:absolute;inset:0;opacity:0.9;}
+  .cat-card .cat-bg svg{width:100%;height:100%;}
+  .cat-card .cat-content{position:relative;z-index:2;}
+  .cat-card h4{font-family:'Fraunces',serif;font-size:24px;margin-bottom:8px;font-weight:500;}
+  .cat-card p{font-size:13.5px;color:var(--stone-light);max-width:220px;}
+  .cat-card.light{background:var(--pine-light);}
+
+  @media(max-width:900px){
+    .cat-grid{grid-template-columns:1fr 1fr;}
+    .cat-card.tall{grid-row:span 1;min-height:300px;}
+  }
+  @media(max-width:600px){
+    .cat-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- WHY US ---------- */
+  .why{background:var(--midnight);padding:110px 0;color:var(--snowdrift);}
+  .why-list{border-top:1px solid var(--line);}
+  .why-row{
+    display:grid;grid-template-columns:200px 1fr 1.1fr;gap:40px;
+    padding:38px 0;border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .why-alt{
+    font-family:'Fraunces',serif;font-style:italic;color:var(--ice);font-size:15px;
+    padding-top:4px;
+  }
+  .why-row h3{font-size:23px;color:var(--snowdrift);}
+  .why-row p{color:var(--stone-light);font-size:15px;max-width:440px;}
+
+  @media(max-width:760px){
+    .why-row{grid-template-columns:1fr;gap:10px;padding:28px 0;}
+    .why-alt{order:1;}
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--pine);color:var(--snowdrift);
+    padding:110px 0 90px;position:relative;overflow:hidden;
+  }
+  .contact-grid{
+    display:grid;grid-template-columns:1.2fr 1fr;gap:60px;
+    position:relative;z-index:2;
+  }
+  .contact h2{font-size:clamp(32px,4.4vw,48px);max-width:480px;}
+  .contact p.lead{color:var(--stone-light);margin-top:18px;max-width:420px;font-size:16.5px;}
+  .contact-actions{margin-top:38px;display:flex;flex-direction:column;gap:14px;max-width:340px;}
+  .contact-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 22px;border:1px solid rgba(244,242,236,0.22);
+    border-radius:2px;transition:border-color .2s ease, background .2s ease;
+  }
+  .contact-row:hover{border-color:var(--amber-soft);background:rgba(201,138,62,0.08);}
+  .contact-row .left{display:flex;align-items:center;gap:14px;}
+  .contact-row .left svg{width:20px;height:20px;color:var(--amber-soft);}
+  .contact-row .title{font-size:15px;font-weight:500;}
+  .contact-row .sub{font-size:12.5px;color:var(--stone-light);margin-top:2px;}
+  .contact-row .arrow{width:15px;height:15px;color:var(--stone-light);}
+
+  .info-block{border-top:1px solid var(--line);padding-top:26px;}
+  .info-block .label{font-size:12.5px;color:var(--ice);margin-bottom:8px;}
+  .info-block .value{font-size:15px;color:var(--stone-light);margin-bottom:22px;}
+
+  .contact-side{display:flex;flex-direction:column;justify-content:center;}
+
+  .piste-legend{
+    display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;
+  }
+  .piste-dot{
+    display:flex;align-items:center;gap:7px;font-size:12px;color:var(--stone-light);
+  }
+  .piste-dot span{width:8px;height:8px;border-radius:50%;display:inline-block;}
+
+  @media(max-width:860px){
+    .contact-grid{grid-template-columns:1fr;gap:40px;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--midnight);color:var(--stone-light);
+    padding:36px 0;border-top:1px solid var(--line);
+  }
+  .footer-inner{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+    font-size:13px;
+  }
+  .footer-inner .fl{display:flex;gap:22px;flex-wrap:wrap;}
+  .footer-inner a:hover{color:var(--snowdrift);}
+
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">LUM<span>IÈ</span>RE</a>
-  <ul class="nav-links">
-    <li><a href="#hizmetler">Hizmetler</a></li>
-    <li><a href="#eve-geliyoruz">Eve Geliş</a></li>
-    <li><a href="#randevu">Hakkımızda</a></li>
-  </ul>
-  <a href="https://wa.me/905XXXXXXXXX" class="nav-cta" target="_blank">Randevu Al</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-text reveal">
-    <div class="hero-eyebrow">Premium Kuaför Hizmeti</div>
-    <h1 class="hero-title">
-      Güzelliğinizi<br><em>Evrenize</em><br>Taşıyoruz
-    </h1>
-    <p class="hero-sub">
-      Salonumuzda ya da doğrudan evinizde — profesyonel kuaför hizmetini en rahat ortamınıza getiriyoruz.
-    </p>
-    <div class="hero-actions">
-      <a href="https://wa.me/905XXXXXXXXX" class="btn-primary" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.857L0 24l6.335-1.507A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.659-.513-5.176-1.407l-.371-.22-3.762.895.947-3.659-.242-.381A9.932 9.932 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        WhatsApp Randevu
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 24L12 9L16 16L20 10L28 24" stroke="#C98A3E" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M4 24H28" stroke="#F4F2EC" stroke-width="1.6"/>
+        <circle cx="16" cy="6" r="1.6" fill="#AED9DD"/>
+      </svg>
+      <span>Atalay Kayak Evi<span class="sub">DAĞ EKİPMAN EVİ</span></span>
+    </a>
+    <nav class="links">
+      <a href="#kiralama">Kiralama</a>
+      <a href="#satis">Satış</a>
+      <a href="#kategoriler">Kategoriler</a>
+      <a href="#neden-biz">Hakkımızda</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="icon-btn" href="https://instagram.com/atalaykayakevi" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
       </a>
-      <a href="#hizmetler" class="btn-secondary">Hizmetleri Gör</a>
+      <a class="icon-btn" href="https://wa.me/905551234567" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.35c1.36.71 2.9 1.12 4.53 1.12h.01c5.46 0 9.91-4.45 9.91-9.91C21.87 6.45 17.5 2 12.04 2zm5.8 14.1c-.24.68-1.4 1.31-1.93 1.35-.5.05-1.13.07-1.82-.11-.42-.11-.96-.31-1.65-.6-2.9-1.25-4.79-4.16-4.94-4.36-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.65.5.24.55.81 1.9.88 2.04.07.14.11.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.35-.42.47-.14.13-.28.28-.13.55.16.28.71 1.18 1.52 1.91 1.05.94 1.93 1.24 2.21 1.38.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.27.35-.22.6-.13.24.09 1.55.73 1.82.86.26.13.44.19.5.3.07.11.07.6-.17 1.28z"/></svg>
+      </a>
     </div>
-    <div class="scroll-hint">
-      <div class="scroll-line"></div>
-      Keşfet
-    </div>
+    <div class="burger" aria-label="Menü"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg></div>
   </div>
-  <div class="hero-image">
-    <div class="hero-img-bg"></div>
-    <div class="hero-decoration">
-      <div class="hero-circle"></div>
-      <div class="hero-circle"></div>
-      <div class="hero-circle"></div>
-      <div class="hero-icon">✂️</div>
-    </div>
-    <div class="hero-badge">
-      <div class="hero-badge-label">Özel Hizmet</div>
-      <div class="hero-badge-text">Evinizde profesyonel bakım</div>
-    </div>
-  </div>
-</section>
+</header>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item reveal">
-    <div class="stat-number">500+</div>
-    <div class="stat-label">Mutlu Müşteri</div>
-  </div>
-  <div class="stat-item reveal">
-    <div class="stat-number">8</div>
-    <div class="stat-label">Yıllık Deneyim</div>
-  </div>
-  <div class="stat-item reveal">
-    <div class="stat-number">7/7</div>
-    <div class="stat-label">Hizmet Günü</div>
-  </div>
-</div>
+<main id="top">
 
-<!-- HİZMETLER -->
-<section class="section" id="hizmetler">
-  <div class="section-header reveal">
-    <div class="section-eyebrow">Hizmetlerimiz</div>
-    <h2 class="section-title">Her İhtiyacınız İçin<br>Uzman Dokunuş</h2>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-icon">✂️</div>
-      <div class="service-name">Saç Kesimi</div>
-      <p class="service-desc">Yüz şeklinize ve tarzınıza özel, kişiselleştirilmiş kesim tasarımı.</p>
-      <div class="service-price">Fiyat için iletişime geçin</div>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-icon">🎨</div>
-      <div class="service-name">Renklendirme</div>
-      <p class="service-desc">Balayage, ombre, highlight ve komple boya — en güncel tekniklerle.</p>
-      <div class="service-price">Fiyat için iletişime geçin</div>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-icon">💆</div>
-      <div class="service-name">Saç Bakımı</div>
-      <p class="service-desc">Keratin, nemlendirme ve onarım maskeleriyle sağlıklı, parlak saçlar.</p>
-      <div class="service-price">Fiyat için iletişime geçin</div>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-icon">👰</div>
-      <div class="service-name">Gelin & Damat</div>
-      <p class="service-desc">Özel gününüzde mükemmel görünüm için özel stil ve tasarım.</p>
-      <div class="service-price">Fiyat için iletişime geçin</div>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-icon">🌊</div>
-      <div class="service-name">Fön & Şekillendirme</div>
-      <p class="service-desc">Günlük düzleştirme, kıvırcıklaştırma ve hacim şekillendirme.</p>
-      <div class="service-price">Fiyat için iletişime geçin</div>
-    </div>
-    <div class="service-card reveal">
-      <div class="service-icon">🏠</div>
-      <div class="service-name">Eve Geliş Paketi</div>
-      <p class="service-desc">Tüm hizmetler doğrudan evinizde — ekipman ve malzeme bizden.</p>
-      <div class="service-price">Fiyat için iletişime geçin</div>
-    </div>
-  </div>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 1600 700" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0E1517"/>
+            <stop offset="55%" stop-color="#16221F"/>
+            <stop offset="100%" stop-color="#20302A"/>
+          </linearGradient>
+          <linearGradient id="glow" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#C98A3E" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#C98A3E" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect width="1600" height="700" fill="url(#sky)"/>
+        <ellipse cx="1180" cy="560" rx="620" ry="260" fill="url(#glow)"/>
 
-<!-- EVE GELİYORUZ -->
-<section class="home-visit" id="eve-geliyoruz">
-  <div class="home-visit-visual">
-    <div class="visit-map">
-      <div class="map-dot"></div>
-      <div class="map-dot"></div>
-      <div class="map-dot"></div>
-      <div class="map-icon">📍</div>
-    </div>
-  </div>
-  <div class="home-visit-text reveal">
-    <div class="section-eyebrow">Fark Yaratan Hizmet</div>
-    <h2 class="home-visit-title">
-      Biz <em>Sizin</em><br>Kapınıza<br>Geliyoruz
-    </h2>
-    <p class="home-visit-desc">
-      Trafikte vakit kaybetmeden, kendi evinizin konforunda profesyonel kuaför hizmetinin tadını çıkarın. Tüm ekipmanlarımızı biz getiriyoruz.
-    </p>
-    <ul class="feature-list">
-      <li>Profesyonel ekipman ve kaliteli ürünler tamamen bizden</li>
-      <li>Yaşlılar, hamile ve engelli bireyler için özel ev hizmeti</li>
-      <li>Düğün, nişan ve özel günler için grup hizmeti</li>
-      <li>Hijyenik ve steril malzemeler — her seferinde taze</li>
-    </ul>
-    <a href="https://wa.me/905XXXXXXXXX" class="btn-primary" target="_blank">
-      Eve Geliş Randevusu Al →
-    </a>
-  </div>
-</section>
+        <!-- contour rings -->
+        <g class="peak-line">
+          <circle cx="1180" cy="560" r="90"/>
+          <circle cx="1180" cy="560" r="150"/>
+          <circle cx="1180" cy="560" r="215"/>
+        </g>
 
-<!-- RANDEVU / WHATSAPP -->
-<section class="contact-section" id="randevu">
-  <div class="reveal">
-    <div class="section-eyebrow">7/24 Ulaşın</div>
-    <h2 class="section-title">Randevu Almak<br>Çok Kolay</h2>
-  </div>
-  <div class="wa-card reveal">
-    <div class="wa-number-label">WhatsApp Hattımız</div>
-    <div class="wa-number">+90 5XX XXX XX XX</div>
-    <div class="wa-note">Mesajınıza en kısa sürede dönüş yapıyoruz.<br>Salon veya eve geliş randevusu için yazın.</div>
-    <a href="https://wa.me/905XXXXXXXXX" class="wa-btn" target="_blank">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.523 5.857L0 24l6.335-1.507A11.955 11.955 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.659-.513-5.176-1.407l-.371-.22-3.762.895.947-3.659-.242-.381A9.932 9.932 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-      WhatsApp'tan Yaz
-    </a>
-    <div class="working-hours">
-      <div class="hour-item">
-        <div class="hour-day">Hafta içi</div>
-        <div class="hour-time">09:00 – 20:00</div>
-      </div>
-      <div class="hour-item">
-        <div class="hour-day">Cumartesi</div>
-        <div class="hour-time">09:00 – 19:00</div>
-      </div>
-      <div class="hour-item">
-        <div class="hour-day">Pazar</div>
-        <div class="hour-time">10:00 – 17:00</div>
+        <!-- back ridge -->
+        <polygon points="0,560 140,430 260,500 420,360 560,470 720,380 900,500 1050,410 1220,520 1400,430 1600,510 1600,700 0,700" fill="#20302A" opacity="0.75"/>
+        <!-- mid ridge -->
+        <polygon points="0,610 180,480 340,560 500,420 660,540 830,450 1000,570 1180,470 1360,580 1600,490 1600,700 0,700" fill="#16221F" opacity="0.9"/>
+        <!-- front ridge with snow caps -->
+        <polygon points="0,660 160,540 300,610 470,500 640,600 820,520 980,630 1160,530 1340,620 1600,560 1600,700 0,700" fill="#0E1517"/>
+        <polygon points="140,555 160,540 180,558 168,565" fill="#F4F2EC" opacity="0.85"/>
+        <polygon points="450,515 470,500 490,518 478,527" fill="#F4F2EC" opacity="0.85"/>
+        <polygon points="800,535 820,520 840,538 828,547" fill="#F4F2EC" opacity="0.85"/>
+        <polygon points="1140,545 1160,530 1180,548 1168,557" fill="#F4F2EC" opacity="0.85"/>
+      </svg>
+    </div>
+    <div class="hero-fade"></div>
+
+    <div class="hero-inner">
+      <div class="hero-eyebrow hero-fadein">Uludağ ve çevresinde kayak &amp; snowboard ekipmanı</div>
+      <h1 class="hero-fadein">Zirveye<br><em>hazırlıklı</em><br>çıkın.</h1>
+      <p class="lead hero-fadein">Atalay Kayak Evi, kayak ve snowboard takımından teknik kıyafete kadar tüm kış sporları ekipmanını hem kiralar hem satar — her parça sezon öncesi bakımdan geçer, her kiralama sigorta ile teslim edilir.</p>
+      <div class="hero-cta hero-fadein">
+        <a class="btn btn-amber" href="https://wa.me/905551234567" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.35c1.36.71 2.9 1.12 4.53 1.12h.01c5.46 0 9.91-4.45 9.91-9.91C21.87 6.45 17.5 2 12.04 2zm5.8 14.1c-.24.68-1.4 1.31-1.93 1.35-.5.05-1.13.07-1.82-.11-.42-.11-.96-.31-1.65-.6-2.9-1.25-4.79-4.16-4.94-4.36-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.65.5.24.55.81 1.9.88 2.04.07.14.11.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.35-.42.47-.14.13-.28.28-.13.55.16.28.71 1.18 1.52 1.91 1.05.94 1.93 1.24 2.21 1.38.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.27.35-.22.6-.13.24.09 1.55.73 1.82.86.26.13.44.19.5.3.07.11.07.6-.17 1.28z"/></svg>
+          WhatsApp'tan yazın
+        </a>
+        <a class="btn btn-outline" href="#kategoriler">Ekipmanları inceleyin</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
+  <div class="contour-divider">
+    <svg viewBox="0 0 1600 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C 250,60 350,0 600,20 C 850,40 950,0 1200,25 C 1350,38 1500,10 1600,22 L1600,60 L0,60 Z" fill="#F4F2EC"/>
+    </svg>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <section class="trust">
+    <div class="trust-row">
+      <div class="trust-item"><div class="num">15+ yıl</div><div class="label">dağ ekipmanı tecrübesi</div></div>
+      <div class="trust-item"><div class="num">2.000+</div><div class="label">bakımlı ekipman parkı</div></div>
+      <div class="trust-item"><div class="num">%100</div><div class="label">kiralamada sigorta dahil</div></div>
+      <div class="trust-item"><div class="num">7/24</div><div class="label">WhatsApp destek hattı</div></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <div class="service-panel rent" id="kiralama">
+      <div class="service-tag">Kiralama</div>
+      <h3>İhtiyacınız kadar kullanın, gerisini bize bırakın.</h3>
+      <p>Günlük veya haftalık kayak, snowboard ve kıyafet kiralama; pistte sorun yaşamamanız için her teslimden önce tek tek kontrol ediyoruz.</p>
+      <ul class="service-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l5 5L20 7"/></svg>Uzman personel ile ölçü ve boy ayarı</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l5 5L20 7"/></svg>Her kiralamada hasar sigortası</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l5 5L20 7"/></svg>Otel ve pist kapısına teslimat</li>
+      </ul>
+      <a class="btn btn-outline" href="https://wa.me/905551234567" target="_blank" rel="noopener">Kiralama için yazın</a>
+    </div>
+    <div class="service-panel sale" id="satis">
+      <div class="service-tag">Satış</div>
+      <h3>Sezonluk değil, yıllarca kullanacağınız ekipman.</h3>
+      <p>Başlangıç seviyesinden yarış sınıfına kadar, seçtiğimiz markalarla kendi ekipmanınızı kurun; teknik personelimiz doğru modeli bulmanıza yardımcı olur.</p>
+      <ul class="service-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l5 5L20 7"/></svg>Seviyenize göre kişisel öneri</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l5 5L20 7"/></svg>Ücretsiz bağlama ayarı ve bakım</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12l5 5L20 7"/></svg>Marka garantisi ile satış</li>
+      </ul>
+      <a class="btn btn-amber" href="https://wa.me/905551234567" target="_blank" rel="noopener">Ürünleri sorun</a>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="categories" id="kategoriler">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Baştan aşağı kış sporları ekipmanı</h2>
+        <p>Kayak takımından aksesuara, tek adreste kirala ya da satın al.</p>
+      </div>
+
+      <div class="cat-grid">
+        <div class="cat-card tall">
+          <div class="cat-bg">
+            <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+              <rect width="500" height="600" fill="#16221F"/>
+              <line x1="150" y1="60" x2="120" y2="560" stroke="#AED9DD" stroke-width="10" stroke-linecap="round" opacity="0.5"/>
+              <line x1="220" y1="60" x2="190" y2="560" stroke="#AED9DD" stroke-width="10" stroke-linecap="round" opacity="0.35"/>
+              <line x1="330" y1="70" x2="360" y2="540" stroke="#C98A3E" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="cat-content">
+            <h4>Kayak Takımları</h4>
+            <p>Kayak, bot ve bağlama; tüm setler seviyeye göre eşleştirilir.</p>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-bg">
+            <svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+              <rect width="500" height="320" fill="#20302A"/>
+              <rect x="150" y="40" width="70" height="260" rx="30" fill="#C98A3E" opacity="0.55" transform="rotate(-8 185 170)"/>
+            </svg>
+          </div>
+          <div class="cat-content">
+            <h4>Snowboard</h4>
+            <p>Freestyle'dan pistten inişe uygun board ve bot seçenekleri.</p>
+          </div>
+        </div>
+
+        <div class="cat-card light">
+          <div class="cat-bg">
+            <svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+              <rect width="500" height="320" fill="#24382F"/>
+              <circle cx="360" cy="90" r="60" fill="#AED9DD" opacity="0.25"/>
+            </svg>
+          </div>
+          <div class="cat-content">
+            <h4>Kayak Kıyafetleri</h4>
+            <p>Mont, pantolon, termal katman — soğuğa karşı teknik giyim.</p>
+          </div>
+        </div>
+
+        <div class="cat-card">
+          <div class="cat-bg">
+            <svg viewBox="0 0 1060 320" xmlns="http://www.w3.org/2000/svg">
+              <rect width="1060" height="320" fill="#16221F"/>
+              <circle cx="850" cy="160" r="10" fill="#F4F2EC" opacity="0.3"/>
+              <circle cx="900" cy="120" r="6" fill="#F4F2EC" opacity="0.25"/>
+              <circle cx="950" cy="200" r="8" fill="#F4F2EC" opacity="0.2"/>
+            </svg>
+          </div>
+          <div class="cat-content">
+            <h4>Aksesuar &amp; Diğer Kış Sporları</h4>
+            <p>Gözlük, kask, eldiven, kar ayakkabısı ve kızak ekipmanları.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="neden-biz">
+    <div class="wrap">
+      <div class="section-head on-dark">
+        <h2>Neden Atalay Kayak Evi</h2>
+        <p>Güven, sadece söylemek değil her teslimatta göstermektir.</p>
+      </div>
+
+      <div class="why-list">
+        <div class="why-row">
+          <div class="why-alt">1.200m</div>
+          <h3>Sezon öncesi tam bakım</h3>
+          <p>Her kayak ve snowboard, sezon başında keskinletme, mumlama ve bağlama kontrolünden geçer; hasarlı ekipman asla rafa çıkmaz.</p>
+        </div>
+        <div class="why-row">
+          <div class="why-alt">1.800m</div>
+          <h3>Doğru ölçü, doğru ekipman</h3>
+          <p>Boy, kilo ve seviyenize göre kayak/bot eşleştirmesi yapılır; yanlış ölçü kaynaklı sakatlanma riskini en aza indiririz.</p>
+        </div>
+        <div class="why-row">
+          <div class="why-alt">2.300m</div>
+          <h3>Şeffaf fiyat, sürpriz yok</h3>
+          <p>Kiralama ve satış fiyatları önceden WhatsApp üzerinden netleşir; teslimde ekstra ücret çıkmaz.</p>
+        </div>
+        <div class="why-row">
+          <div class="why-alt">2.450m</div>
+          <h3>Pistte destek</h3>
+          <p>Kiralama süresi boyunca bağlama ayarı veya değişim ihtiyacında aynı gün içinde yanınızdayız.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="iletisim">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Ekipmanınızı ayarlayalım.</h2>
+        <p class="lead">Kiralama, satış ya da ölçü sorularınız için en hızlı yanıtı WhatsApp'tan alırsınız. İnstagram'dan güncel stoğu takip edebilirsiniz.</p>
+
+        <div class="contact-actions">
+          <a class="contact-row" href="https://wa.me/905551234567" target="_blank" rel="noopener">
+            <div class="left">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.35c1.36.71 2.9 1.12 4.53 1.12h.01c5.46 0 9.91-4.45 9.91-9.91C21.87 6.45 17.5 2 12.04 2zm5.8 14.1c-.24.68-1.4 1.31-1.93 1.35-.5.05-1.13.07-1.82-.11-.42-.11-.96-.31-1.65-.6-2.9-1.25-4.79-4.16-4.94-4.36-.14-.2-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.65.5.24.55.81 1.9.88 2.04.07.14.11.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.35-.42.47-.14.13-.28.28-.13.55.16.28.71 1.18 1.52 1.91 1.05.94 1.93 1.24 2.21 1.38.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.27.35-.22.6-.13.24.09 1.55.73 1.82.86.26.13.44.19.5.3.07.11.07.6-.17 1.28z"/></svg>
+              <div><div class="title">WhatsApp</div><div class="sub">+90 555 123 45 67</div></div>
+            </div>
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+
+          <a class="contact-row" href="https://instagram.com/atalaykayakevi" target="_blank" rel="noopener">
+            <div class="left">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+              <div><div class="title">Instagram</div><div class="sub">@atalaykayakevi</div></div>
+            </div>
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="piste-legend">
+          <div class="piste-dot"><span style="background:var(--piste-green)"></span>Başlangıç</div>
+          <div class="piste-dot"><span style="background:var(--piste-blue)"></span>Orta</div>
+          <div class="piste-dot"><span style="background:var(--piste-red)"></span>İleri</div>
+          <div class="piste-dot"><span style="background:var(--piste-black)"></span>Uzman</div>
+        </div>
+      </div>
+
+      <div class="contact-side">
+        <div class="info-block">
+          <div class="label">Mağaza</div>
+          <div class="value">Uludağ Kayak Merkezi Yolu, Bursa</div>
+        </div>
+        <div class="info-block">
+          <div class="label">Çalışma saatleri</div>
+          <div class="value">Sezon içi her gün 08:00–20:00</div>
+        </div>
+        <div class="info-block" style="border-bottom:1px solid var(--line);padding-bottom:26px;">
+          <div class="label">E-posta</div>
+          <div class="value">info@atalaykayakevi.com</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
 <footer>
-  <div class="footer-logo">LUMIÈRE</div>
-  <div class="footer-copy">© 2026 Lumière Kuaför — Tüm hakları saklıdır.</div>
+  <div class="wrap footer-inner">
+    <span>© 2026 Atalay Kayak Evi</span>
+    <div class="fl">
+      <a href="#kiralama">Kiralama</a>
+      <a href="#satis">Satış</a>
+      <a href="https://instagram.com/atalaykayakevi" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://wa.me/905551234567" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
 </footer>
 
-<script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // WhatsApp linkleri — kendi numaranızla değiştirin
-  const WA_NUMBER = '905411282500'; // ← BURAYA GERÇEK NUMARA GELECEk
-  document.querySelectorAll('a[href*="905XXXXXXXXX"]').forEach(a => {
-    a.href = `https://wa.me/${WA_NUMBER}?text=Merhaba,%20randevu%20almak%20istiyorum.`;
-  });
-</script>
 </body>
 </html>
